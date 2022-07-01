@@ -7,7 +7,7 @@ import org.example.vent.farmacia.empleado.entities.Funcion;
 import org.example.vent.farmacia.empleado.entities.Rol;
 import org.example.vent.farmacia.empleado.events.*;
 import org.example.vent.farmacia.empleado.values.*;
-import org.example.vent.farmacia.venta.Venta;
+import org.example.vent.farmacia.venta.values.VentaID;
 
 import java.util.List;
 import java.util.Optional;
@@ -18,7 +18,7 @@ public class Empleado extends AggregateEvent<EmpleadoID> {
     protected Celular celular;
     protected Correo correo;
     protected Rol rol;
-    protected Set<Venta> ventas;
+    protected Set<VentaID> ventas;
     protected Set<Funcion> funciones;
     protected Set<Estudio> estudios;
 
@@ -47,8 +47,12 @@ public class Empleado extends AggregateEvent<EmpleadoID> {
         appendChange(new FuncionEliminada(funcionID)).apply();
     }
 
-    public void agregarVenta(){
-        //TODO: agregar cuando se cree el agregado venta
+    public void agregarVenta(VentaID ventaID){
+        appendChange(new VentaAgregada(ventaID)).apply();
+    }
+
+    public void eliminarVenta(VentaID ventaID){
+        appendChange(new VentaEliminada(ventaID)).apply();
     }
 
     public void agregarEstudio(EstudioID estudioID, DescripcionEstudios descripcionEstudios){
@@ -80,6 +84,10 @@ public class Empleado extends AggregateEvent<EmpleadoID> {
         return estudios().stream().filter(estudio -> estudio.identity().equals(estudioID)).findFirst();
     }
 
+    public Optional<VentaID> getVentaID(VentaID ventaID){
+        return ventas().stream().filter(venta -> venta.equals(ventaID)).findFirst();
+    }
+
     public Nombre nombre() {
         return nombre;
     }
@@ -104,7 +112,7 @@ public class Empleado extends AggregateEvent<EmpleadoID> {
         return rol;
     }
 
-    public Set<Venta> ventas() {
+    public Set<VentaID> ventas() {
         return ventas;
     }
 }

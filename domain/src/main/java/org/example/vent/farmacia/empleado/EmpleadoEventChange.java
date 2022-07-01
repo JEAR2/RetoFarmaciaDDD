@@ -47,13 +47,23 @@ public class EmpleadoEventChange extends EventChange {
 
         apply((DescripcionDeEstudiosActualizada event)->{
             var estudio = empleado.getEstudioPorID(event.estudioID())
-                    .orElseThrow(()-> new IllegalArgumentException("estudio "));
+                    .orElseThrow(()-> new IllegalArgumentException("estudio no encontrado"));
             estudio.actualizarDescripcionEstudios(event.descripcionEstudios());
         });
 
         apply((DescripcionDeRolActualizada event)->{
             empleado.rol.actualizarDescripcion(event.descripcion());
 
+        });
+
+        apply((VentaAgregada event)->{
+            empleado.ventas.add(event.ventaID());
+        });
+
+        apply((VentaEliminada event)->{
+            var venta = empleado.getVentaID(event.ventaID())
+                    .orElseThrow(()->new IllegalArgumentException("Ventaq no encontrada"));
+            empleado.ventas.remove(venta);
         });
 
 

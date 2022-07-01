@@ -1,6 +1,10 @@
-package org.example.vent.farmacia.venta;
+package org.example.vent.farmacia.venta.entities;
 
 import co.com.sofka.domain.generic.Entity;
+import org.example.vent.farmacia.venta.values.DetalleFactura;
+import org.example.vent.farmacia.venta.values.FacturaID;
+import org.example.vent.farmacia.venta.values.FechaFactura;
+import org.example.vent.farmacia.venta.values.ValorAPagar;
 
 public class Factura extends Entity<FacturaID> {
     protected FechaFactura fechaFactura;

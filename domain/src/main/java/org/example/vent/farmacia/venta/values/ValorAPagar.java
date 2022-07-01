@@ -1,4 +1,4 @@
-package org.example.vent.farmacia.venta;
+package org.example.vent.farmacia.venta.values;
 
 import co.com.sofka.domain.generic.ValueObject;
 
