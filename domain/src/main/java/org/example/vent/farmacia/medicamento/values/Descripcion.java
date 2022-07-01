@@ -16,7 +16,7 @@ public class Descripcion implements ValueObject<String> {
         return value;
     }
 
-    public Descripcion cambiarDescripcion(Descripcion descripcion){
-        return new Descripcion(Objects.requireNonNull(descripcion.value()));
+    public Descripcion cambiarDescripcion(String descripcion){
+        return new Descripcion(Objects.requireNonNull(descripcion));
     }
 }

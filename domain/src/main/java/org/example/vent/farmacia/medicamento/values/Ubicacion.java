@@ -14,7 +14,7 @@ public class Ubicacion implements ValueObject<String> {
         return value;
     }
 
-    public Ubicacion cambiarubicacion(Ubicacion ubicacion){
+    public Ubicacion cambiarUbicacion(Ubicacion ubicacion){
         return new Ubicacion(ubicacion.value());
     }
 }

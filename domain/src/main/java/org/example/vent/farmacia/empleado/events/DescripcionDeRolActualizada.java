@@ -6,15 +6,15 @@ import org.example.vent.farmacia.empleado.values.RolID;
 
 public class DescripcionDeRolActualizada extends DomainEvent {
     private final RolID rolID;
-    private final Descripcion descripcion;
+    private final String descripcion;
 
-    public DescripcionDeRolActualizada(RolID rolID, Descripcion descripcion) {
+    public DescripcionDeRolActualizada(RolID rolID, String descripcion) {
         super("org.example.vent.farmacia.DescripcionDeRolActualizada");
         this.rolID = rolID;
         this.descripcion = descripcion;
     }
 
-    public Descripcion descripcion() {
+    public String descripcion() {
         return descripcion;
     }
 

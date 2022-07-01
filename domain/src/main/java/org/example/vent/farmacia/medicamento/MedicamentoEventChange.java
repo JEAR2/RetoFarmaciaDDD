@@ -49,7 +49,7 @@ public class MedicamentoEventChange extends EventChange {
 
 
         apply((UbicacionDeMedicamentoCambiada event)->{
-            medicamento.ubicacion.cambiarubicacion(event.ubicacion());
+            medicamento.ubicacion.cambiarUbicacion(event.ubicacion());
         });
 
     }

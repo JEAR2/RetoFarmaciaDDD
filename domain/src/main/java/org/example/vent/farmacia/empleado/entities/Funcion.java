@@ -20,8 +20,8 @@ public class Funcion extends Entity<FuncionID> {
         this.descripcion = descripcion.cambiarDescripcion(nombre,detalle);
     }
     */
-    public void actualizarDescripcion(Descripcion descripcion){
-        this.descripcion = Objects.requireNonNull(descripcion);
+    public void actualizarDescripcion(String detalle){
+        this.descripcion = descripcion.cambiarDescripcion(Objects.requireNonNull(detalle));
     }
 
     public Descripcion descripcion() {

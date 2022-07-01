@@ -19,6 +19,13 @@ public class EmpleadoEventChange extends EventChange {
             empleado.rol = event.rol();
         });
 
+        apply((FuncionCreada event)->{
+            empleado.funciones.add(new Funcion(
+                    event.funcionID(),
+                    event.descripcion()
+            ));
+        });
+
         apply((FuncionAgregada event)->{
             empleado.funciones.add(new Funcion(
                     event.funcionID(),
@@ -39,7 +46,7 @@ public class EmpleadoEventChange extends EventChange {
             ));
         });
 
-        apply((DescripcionDeFuncionActualizada event)->{
+        apply((DetalleDescripcionDeFuncionActualizada event)->{
             var funcion = empleado.getFuncionPorID(event.funcionID())
                     .orElseThrow(()-> new IllegalArgumentException("No se encuntra la funcion para el ampleado actual"));
             funcion.actualizarDescripcion(event.descripcion());

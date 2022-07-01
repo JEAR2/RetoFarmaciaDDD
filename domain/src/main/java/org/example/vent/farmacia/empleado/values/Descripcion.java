@@ -28,8 +28,8 @@ public class Descripcion implements ValueObject<Descripcion.Props> {
         };
     }
 
-    public Descripcion cambiarDescripcion(Descripcion descripcion){
-        return new Descripcion(descripcion.nombre,descripcion.detalle);
+    public Descripcion cambiarDescripcion(String descripcion){
+        return new Descripcion(nombre,descripcion);
     }
 
     public interface Props {

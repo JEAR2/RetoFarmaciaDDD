@@ -25,6 +25,7 @@ public class Empleado extends AggregateEvent<EmpleadoID> {
     public Empleado(EmpleadoID entityId, Nombre nombre, Celular celular, Correo correo,Rol rol) {
         super(entityId);
         appendChange(new EmpleadoCreado(nombre,celular,correo,rol)).apply();
+
     }
 
     private Empleado(EmpleadoID empleadoID){
@@ -38,9 +39,14 @@ public class Empleado extends AggregateEvent<EmpleadoID> {
         return empleado;
     }
 
+
     //Comportamientos
     public void agregarFuncion(FuncionID entityId, Descripcion descripcion){
         appendChange(new FuncionAgregada(entityId,descripcion)).apply();
+    }
+
+    public void crearFuncion(FuncionID funcionID, Descripcion descripcion){
+        appendChange(new FuncionCreada(funcionID,descripcion)).apply();
     }
 
     public void eliminarFuncion(FuncionID funcionID){
@@ -60,19 +66,19 @@ public class Empleado extends AggregateEvent<EmpleadoID> {
     }
 
     /*
-    public void actualizarDescripcionDeFuncion(FuncionID funcionID,Nombre nombre, Descripcion descripcion){
-        appendChange(new DescripcionDeFuncionActualizada(funcionID,descripcion)).apply();
+    public void actualizarDetalleDescripcionDeFuncion(FuncionID funcionID,Nombre nombre, Descripcion descripcion){
+        appendChange(new DetalleDeDescripcionDeFuncionActualizada(funcionID,descripcion)).apply();
     }
     */
-    public void actualizarDescripcionDeFuncion(FuncionID funcionID,Descripcion descripcion){
-        appendChange(new DescripcionDeFuncionActualizada(funcionID,descripcion)).apply();
+    public void actualizarDetalleDescripcionDeFuncion(FuncionID funcionID,String descripcion){
+        appendChange(new DetalleDescripcionDeFuncionActualizada(funcionID,descripcion)).apply();
     }
 
     public void actualizarDescripcionDeEstudios(EstudioID estudioID,DescripcionEstudios descripcionEstudios){
         appendChange(new DescripcionDeEstudiosActualizada(estudioID,descripcionEstudios)).apply();
     }
 
-    public void actualizarDescripcionRol(RolID rolID,Descripcion descripcion){
+    public void actualizarDescripcionRol(RolID rolID,String descripcion){
         appendChange(new DescripcionDeRolActualizada(rolID,descripcion)).apply();
     }
 

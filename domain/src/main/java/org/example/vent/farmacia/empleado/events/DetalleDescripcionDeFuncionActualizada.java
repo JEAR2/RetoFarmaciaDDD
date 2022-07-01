@@ -1,14 +1,13 @@
 package org.example.vent.farmacia.empleado.events;
 
 import co.com.sofka.domain.generic.DomainEvent;
-import org.example.vent.farmacia.empleado.values.Descripcion;
 import org.example.vent.farmacia.empleado.values.FuncionID;
 
-public class DescripcionDeFuncionActualizada extends DomainEvent {
+public class DetalleDescripcionDeFuncionActualizada extends DomainEvent {
     private final FuncionID funcionID;
-    private final Descripcion descripcion;
+    private final String descripcion;
 
-    public DescripcionDeFuncionActualizada(FuncionID funcionID, Descripcion descripcion) {
+    public DetalleDescripcionDeFuncionActualizada(FuncionID funcionID, String descripcion) {
         super("org.example.vent.farmacia.DescripcionDeFuncionActualizada");
         this.funcionID = funcionID;
         this.descripcion = descripcion;
@@ -18,7 +17,7 @@ public class DescripcionDeFuncionActualizada extends DomainEvent {
         return funcionID;
     }
 
-    public Descripcion descripcion() {
+    public String descripcion() {
         return descripcion;
     }
 }

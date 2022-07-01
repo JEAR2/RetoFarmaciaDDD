@@ -1,0 +1,13 @@
+package org.example.vent.farmacia.empleado;
+
+import co.com.sofka.business.generic.UseCase;
+import co.com.sofka.business.support.RequestCommand;
+import co.com.sofka.business.support.ResponseEvents;
+import org.example.vent.farmacia.empleado.commands.AgregarFuncionAEmpleadoCommand;
+
+public class AgregarFuncionAEmpleadoUseCase extends UseCase<RequestCommand<AgregarFuncionAEmpleadoCommand>, ResponseEvents> {
+    @Override
+    public void executeUseCase(RequestCommand<AgregarFuncionAEmpleadoCommand> agregarFuncionAEmpleadoCommandRequestCommand) {
+
+    }
+}

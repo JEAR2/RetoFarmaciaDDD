@@ -14,7 +14,7 @@ public class TipoMedicamento extends Entity<TipoMedicamentoID> {
         this.descripcion = descripcion;
     }
 
-    public void actualizarDescripcion(Descripcion descripcion){
-        this.descripcion = descripcion.cambiarDescripcion(Objects.requireNonNull(descripcion));
+    public void actualizarDescripcion(Descripcion descripcionModificada){
+        this.descripcion = descripcion.cambiarDescripcion(Objects.requireNonNull(descripcionModificada).value());
     }
 }

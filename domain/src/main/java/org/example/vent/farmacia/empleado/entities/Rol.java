@@ -16,10 +16,10 @@ public class Rol extends Entity<RolID> {
     /*
     public void actualizarDescripcion(String nombre,String detalle){
         this.descripcion = descripcion.cambiarDescripcion(nombre,detalle);
-    }
+    }s
      */
 
-    public void actualizarDescripcion(Descripcion descripcionModificar){
+    public void actualizarDescripcion(String descripcionModificar){
         this.descripcion = descripcion.cambiarDescripcion(Objects.requireNonNull(descripcionModificar));
     }
 }
