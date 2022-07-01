@@ -11,8 +11,8 @@ public class Factura extends Entity<FacturaID> {
     protected DetalleFactura detalleFactura;
     protected ValorAPagar valorAPagar;
 
-    public Factura(FacturaID entityId, FechaFactura fechaFactura, DetalleFactura detalleFactura, ValorAPagar valorAPagar) {
-        super(entityId);
+    public Factura(FacturaID facturaID, FechaFactura fechaFactura, DetalleFactura detalleFactura, ValorAPagar valorAPagar) {
+        super(facturaID);
         this.fechaFactura = fechaFactura;
         this.detalleFactura = detalleFactura;
         this.valorAPagar = valorAPagar;

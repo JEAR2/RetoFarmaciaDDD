@@ -2,9 +2,8 @@ package org.example.vent.farmacia.venta;
 
 import co.com.sofka.domain.generic.EventChange;
 import org.example.vent.farmacia.medicamento.values.MedicamentoID;
-import org.example.vent.farmacia.venta.events.MedicamentoAgregado;
-import org.example.vent.farmacia.venta.events.MedicamentoEliminado;
-import org.example.vent.farmacia.venta.events.VentaCreada;
+import org.example.vent.farmacia.venta.entities.Factura;
+import org.example.vent.farmacia.venta.events.*;
 
 import java.util.HashSet;
 
@@ -24,6 +23,18 @@ public class VentaEventChange extends EventChange {
             MedicamentoID medicamentoID = venta.getMedicamentoID(event.medicamentoID())
                     .orElseThrow(()-> new IllegalArgumentException());
             venta.medicamentosID.remove(medicamentoID);
+        });
+
+        apply((FacturaCreada event)->{
+            venta.factura = new Factura(
+                    event.facturaID(),
+                    event.fechaFactura(),
+                    event.detalleFactura(),
+                    event.valorAPagar()
+            );
+        });
+        apply((ClienteAgregado event)->{
+            venta.cliente = event.cliente();
         });
 
     }

@@ -4,10 +4,8 @@ import co.com.sofka.domain.generic.AggregateEvent;
 import org.example.vent.farmacia.medicamento.values.MedicamentoID;
 import org.example.vent.farmacia.venta.entities.Cliente;
 import org.example.vent.farmacia.venta.entities.Factura;
-import org.example.vent.farmacia.venta.events.MedicamentoAgregado;
-import org.example.vent.farmacia.venta.events.MedicamentoEliminado;
-import org.example.vent.farmacia.venta.events.VentaCreada;
-import org.example.vent.farmacia.venta.values.VentaID;
+import org.example.vent.farmacia.venta.events.*;
+import org.example.vent.farmacia.venta.values.*;
 
 import java.util.Optional;
 import java.util.Set;
@@ -29,6 +27,14 @@ public class Venta extends AggregateEvent<VentaID> {
 
     public void eliminarMedicamento(MedicamentoID medicamentoID){
         appendChange(new MedicamentoEliminado(medicamentoID)).apply();
+    }
+
+    public void crearFactura(FacturaID facturaID, FechaFactura fechaFactura, DetalleFactura detalleFactura, ValorAPagar valorAPagar){
+        appendChange(new FacturaCreada(facturaID,fechaFactura,detalleFactura,valorAPagar)).apply();
+    }
+
+    public void agregarCliente(Cliente cliente){
+        appendChange(new ClienteAgregado(cliente)).apply();
     }
 
     public Optional<MedicamentoID> getMedicamentoID(MedicamentoID medicamentoID){
