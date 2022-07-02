@@ -33,11 +33,10 @@ class AgregarFuncionAEmpleadoUseCaseTest {
     public void agregarFuncionAEmpleado(){
         //Arrange
         EmpleadoID empleadoID = EmpleadoID.of("john");
-        Descripcion descripcion = new Descripcion("Funcion 1","Nueva descripcion");
-        FuncionID funcionID = FuncionID.of("maquina1");
-        String detalle = "";
+        Descripcion descripcion = new Descripcion("Funcion 1","descripcion");
+        FuncionID funcionID = FuncionID.of("f1");
 
-        var command = new AgregarFuncionAEmpleadoCommand(empleadoID, funcionID, detalle);
+        var command = new AgregarFuncionAEmpleadoCommand(empleadoID, funcionID, descripcion);
         when(repository.getEventsBy("john")).thenReturn(historico());
         useCase.addRepository(repository);
 
@@ -49,17 +48,26 @@ class AgregarFuncionAEmpleadoUseCaseTest {
 
         //Asserts
         var event = (FuncionAgregada)events.get(0);
-        Assertions.assertEquals("Funcion 1",event.funcionID().value());
-        Assertions.assertEquals("Nueva descripcion",event.funcionID());
+        Assertions.assertEquals("Funcion 1",event.descripcion().value().nombre());
+        Assertions.assertEquals("descripcion",event.descripcion().value().detalle());
     }
 
     private List<DomainEvent> historico() {
-        return List.of(new EmpleadoCreado(
-                new Nombre("john"),
-                new Celular("3231"),
-                new Correo("jhedacro"),
-                new Rol(new RolID(),new Descripcion("desc1","Desccripcion rol 1"))
-        ));
+        EmpleadoID empleadoID = EmpleadoID.of("1");
+        Nombre nombre = new Nombre("john");
+        Celular celular = new Celular("1234");
+        Correo correo = new Correo("jhedacro");
+        RolID rolID = RolID.of("r1");
+        Descripcion descripcionRol = new Descripcion("rol1","Descripcion rol uno");
+        Rol rol = new Rol(rolID,descripcionRol);
+        FuncionID funcionID = FuncionID.of("f1");
+        Descripcion descripcionFuncion = new Descripcion("d1","Descripcion funcion uno");
+
+
+        return List.of(
+                new EmpleadoCreado(nombre,celular,correo,rolID,descripcionRol),
+                new FuncionCreada(funcionID,descripcionFuncion)
+        );
     }
 
 }

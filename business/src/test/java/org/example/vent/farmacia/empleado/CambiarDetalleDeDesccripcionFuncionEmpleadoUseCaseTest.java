@@ -6,6 +6,7 @@ import co.com.sofka.business.support.RequestCommand;
 import co.com.sofka.domain.generic.DomainEvent;
 import org.example.vent.farmacia.empleado.commands.CambiarDetalleDeFuncionAEmpleadoCommand;
 import org.example.vent.farmacia.empleado.entities.Rol;
+import org.example.vent.farmacia.empleado.events.DetalleDescripcionDeFuncionActualizada;
 import org.example.vent.farmacia.empleado.events.EmpleadoCreado;
 import org.example.vent.farmacia.empleado.events.FuncionAgregada;
 import org.example.vent.farmacia.empleado.values.*;
@@ -46,8 +47,8 @@ class CambiarDetalleDeDesccripcionFuncionEmpleadoUseCaseTest {
                 .getDomainEvents();
 
         //Asserts
-        var event = (FuncionAgregada)events.get(0);
-        Assertions.assertEquals("Nuevo detalle",event.descripcion().value().detalle());
+        var event = (DetalleDescripcionDeFuncionActualizada)events.get(0);
+        Assertions.assertEquals("Nuevo detalle",event.descripcion());
     }
 
     private List<DomainEvent> historico() {
@@ -62,7 +63,7 @@ class CambiarDetalleDeDesccripcionFuncionEmpleadoUseCaseTest {
         Descripcion descripcionFuncion = new Descripcion("d1","Descripcion funcion uno");
 
         return List.of(
-                new EmpleadoCreado(nombre,celular,correo,rol),
+                new EmpleadoCreado(nombre,celular,correo,rolID,descripcionRol),
                new FuncionCreada(funcionID,descripcionFuncion),
                 new FuncionAgregada(funcionID,descripcionFuncion)
         );

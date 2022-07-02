@@ -8,12 +8,12 @@ import org.example.vent.farmacia.empleado.values.FuncionID;
 public class AgregarFuncionAEmpleadoCommand extends Command {
     private final EmpleadoID empleadoID;
     private final  FuncionID funcionID;
-    private final String detalle;
+    private final Descripcion descripcion;
 
-    public AgregarFuncionAEmpleadoCommand(EmpleadoID empleadoID, FuncionID funcionID, String detalle) {
+    public AgregarFuncionAEmpleadoCommand(EmpleadoID empleadoID, FuncionID funcionID, Descripcion descripcion) {
         this.empleadoID = empleadoID;
         this.funcionID = funcionID;
-        this.detalle = detalle;
+        this.descripcion = descripcion;
     }
 
     public EmpleadoID getEmpleadoID() {
@@ -25,7 +25,7 @@ public class AgregarFuncionAEmpleadoCommand extends Command {
         return funcionID;
     }
 
-    public String getDetalle() {
-        return detalle;
+    public Descripcion getDescripcion() {
+        return descripcion;
     }
 }

@@ -17,14 +17,18 @@ public class Empleado extends AggregateEvent<EmpleadoID> {
     protected Nombre nombre;
     protected Celular celular;
     protected Correo correo;
+
     protected Rol rol;
+    protected RolID rolID;
+
+    protected Descripcion descripcion;
     protected Set<VentaID> ventas;
     protected Set<Funcion> funciones;
     protected Set<Estudio> estudios;
 
-    public Empleado(EmpleadoID entityId, Nombre nombre, Celular celular, Correo correo,Rol rol) {
+    public Empleado(EmpleadoID entityId, Nombre nombre, Celular celular, Correo correo,RolID rolID, Descripcion descripcion) {
         super(entityId);
-        appendChange(new EmpleadoCreado(nombre,celular,correo,rol)).apply();
+        appendChange(new EmpleadoCreado(nombre,celular,correo,rolID,descripcion)).apply();
 
     }
 
@@ -106,6 +110,7 @@ public class Empleado extends AggregateEvent<EmpleadoID> {
         return celular;
     }
 
+
     public Set<Funcion> funciones() {
         return funciones;
     }
@@ -114,8 +119,16 @@ public class Empleado extends AggregateEvent<EmpleadoID> {
         return estudios;
     }
 
+    public RolID rolID() {
+        return rolID;
+    }
+
     public Rol rol() {
         return rol;
+    }
+
+    public Descripcion descripcion() {
+        return descripcion;
     }
 
     public Set<VentaID> ventas() {

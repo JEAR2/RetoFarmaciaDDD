@@ -10,5 +10,8 @@
         <module name="domain" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="hola" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>

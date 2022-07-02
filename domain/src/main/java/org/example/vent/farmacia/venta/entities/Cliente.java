@@ -1,7 +1,6 @@
 package org.example.vent.farmacia.venta.entities;
 
 import co.com.sofka.domain.generic.Entity;
-import org.example.vent.farmacia.venta.FormulaMedica;
 import org.example.vent.farmacia.venta.values.ClienteID;
 import org.example.vent.farmacia.venta.values.Nombre;
 

@@ -3,6 +3,7 @@ package org.example.vent.farmacia.empleado;
 import co.com.sofka.domain.generic.EventChange;
 import org.example.vent.farmacia.empleado.entities.Estudio;
 import org.example.vent.farmacia.empleado.entities.Funcion;
+import org.example.vent.farmacia.empleado.entities.Rol;
 import org.example.vent.farmacia.empleado.events.*;
 
 import java.util.HashSet;
@@ -16,7 +17,7 @@ public class EmpleadoEventChange extends EventChange {
             empleado.celular = event.celular();
             empleado.funciones = new HashSet<>();
             empleado.ventas =  new HashSet<>();
-            empleado.rol = event.rol();
+            empleado.rol = new Rol(event.rolID(),event.descripcion());
         });
 
         apply((FuncionCreada event)->{
