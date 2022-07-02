@@ -69,6 +69,10 @@ public class Empleado extends AggregateEvent<EmpleadoID> {
         appendChange(new EstudioAgregado(estudioID,descripcionEstudios)).apply();
     }
 
+    public void cambiarCelular(EmpleadoID empleadoID, Celular celular){
+        appendChange(new CelularEmpleadoCambiado(empleadoID,celular)).apply();
+    }
+
     /*
     public void actualizarDetalleDescripcionDeFuncion(FuncionID funcionID,Nombre nombre, Descripcion descripcion){
         appendChange(new DetalleDeDescripcionDeFuncionActualizada(funcionID,descripcion)).apply();

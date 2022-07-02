@@ -11,7 +11,7 @@ public class CambiarUbicacionDeMedicamentoUseCase extends UseCase<RequestCommand
     public void executeUseCase(RequestCommand<CambiarUbicacionDeMedicamentoCommand> cambiarUbicacionDeMedicamentoCommandRequestCommand) {
         var command = cambiarUbicacionDeMedicamentoCommandRequestCommand.getCommand();
         var medicamento = Medicamento.from(command.getMedicamentoID(),repository().getEventsBy(command.getMedicamentoID().value()));
-        medicamento.cambiarUbicacionMedicamento(command.getUbicacion());
+        medicamento.cambiarUbicacionMedicamento(command.getMedicamentoID(),command.getUbicacion());
         emit().onResponse(new ResponseEvents(medicamento.getUncommittedChanges()));
     }
 }

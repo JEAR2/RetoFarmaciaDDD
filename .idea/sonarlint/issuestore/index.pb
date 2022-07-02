@@ -1,8 +1,6 @@
 
 ”
 ddomain/src/main/java/org/example/vent/farmacia/empleado/events/DescripcionDeEstudiosActualizada.java,0\f\0fe9c98dff4572f41a326e65c315c89c6ecccd74
-{
-Kdomain/src/main/java/org/example/vent/farmacia/empleado/values/Celular.java,6\6\665bb6125479d97e737accebe412b7bd477a3423
 }
 Mdomain/src/main/java/org/example/vent/farmacia/empleado/values/FuncionID.java,b\d\bd0431bd1d38d78f900e878ca7bf85b053631eb2
 y

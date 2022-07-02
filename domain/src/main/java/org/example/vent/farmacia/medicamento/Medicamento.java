@@ -55,8 +55,8 @@ public class Medicamento extends AggregateEvent<MedicamentoID> {
         appendChange(new CelularDeProveedorCambiado(proveedorID,celular)).apply();
     }
 
-    public void cambiarUbicacionMedicamento(Ubicacion ubicacion){
-        appendChange(new UbicacionDeMedicamentoCambiada(ubicacion)).apply();
+    public void cambiarUbicacionMedicamento(MedicamentoID medicamentoID,Ubicacion ubicacion){
+        appendChange(new UbicacionDeMedicamentoCambiada(medicamentoID,ubicacion)).apply();
     }
 
     public Optional<Proveedor> getProveedorPorID(ProveedorID proveedorID){

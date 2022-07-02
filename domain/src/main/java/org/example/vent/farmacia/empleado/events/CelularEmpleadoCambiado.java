@@ -1,4 +1,4 @@
-package org.example.vent.farmacia.empleado;
+package org.example.vent.farmacia.empleado.events;
 
 import co.com.sofka.domain.generic.DomainEvent;
 import org.example.vent.farmacia.empleado.values.Celular;

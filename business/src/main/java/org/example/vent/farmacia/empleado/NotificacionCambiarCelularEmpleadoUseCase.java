@@ -4,11 +4,10 @@ import co.com.sofka.business.generic.UseCase;
 import co.com.sofka.business.support.ResponseEvents;
 import co.com.sofka.business.support.TriggeredEvent;
 import org.example.vent.farmacia.empleado.events.CelularEmpleadoCambiado;
-import org.example.vent.farmacia.empleado.medicamento.UbicacionServiceMedicamento;
 
 import java.util.List;
 
-public class NotificacionCamciarCelularEmpleadoUseCase extends UseCase<TriggeredEvent<CelularEmpleadoCambiado>, ResponseEvents> {
+public class NotificacionCambiarCelularEmpleadoUseCase extends UseCase<TriggeredEvent<CelularEmpleadoCambiado>, ResponseEvents> {
     @Override
     public void executeUseCase(TriggeredEvent<CelularEmpleadoCambiado> celularEmpleadoCambiadoTriggeredEvent) {
         var event = celularEmpleadoCambiadoTriggeredEvent.getDomainEvent();

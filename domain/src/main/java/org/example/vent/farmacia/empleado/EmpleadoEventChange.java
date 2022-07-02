@@ -40,6 +40,10 @@ public class EmpleadoEventChange extends EventChange {
             empleado.funciones.remove(funcion);
         });
 
+        apply((CelularEmpleadoCambiado event)->{
+            empleado.celular.cambiarCelular(event.celular());
+        });
+
         apply((EstudioAgregado event)->{
             empleado.estudios.add(new Estudio(
                     event.estudioID(),
